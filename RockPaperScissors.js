@@ -16,8 +16,6 @@ ELSE player wins
 
 IF player picks scissors and COMPUTER returns rock, COMPUTER wins
 ELSE player wins
- let play = computerPlay();
- console.log (play);
 */
 
 var choices = [
@@ -26,10 +24,15 @@ var choices = [
     'scissors'
 ]
 
+for (let i = 0 ; i < 5 ; i++){
+
 function computerPlay(){
     let computerChoice = choices[Math.floor (Math.random() * choices.length)];
     return computerChoice;
 }
+
+
+//This defines how the gameplay will flow//
 
  function oneRound(playerSelection, computerSelection){
     if (playerSelection == "rock" && computerSelection == "paper") {
@@ -38,17 +41,26 @@ function computerPlay(){
     if (playerSelection == 'paper' && computerSelection == 'scissors') {
         result = "You Lose! Scissors beats Paper";
     }
+
     if (playerSelection == 'scissors' && computerSelection == 'rock'){
         result = "You Lose! Rock beats Scissors";
+
+    } else if(playerSelection == computerSelection){
+        result = "It's a Tie!Play Again?";
+
     } else{
         result = `You Win! ${playerSelection} beats ${computerSelection}`;
-    }
+    } 
     return result;
  }
 
- let playerSelection = "rock";
- let computerSelection = computerPlay();
- console.log(oneRound(playerSelection, computerSelection));
- 
+
+//This calls the functions defined earlier//
 
 
+let playerSelection = prompt("Enter rock, paper or scissors");
+
+let computerSelection = computerPlay();
+
+console.log (oneRound(playerSelection , computerSelection));
+}
