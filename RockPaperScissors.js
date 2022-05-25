@@ -24,8 +24,6 @@ var choices = [
     'scissors'
 ]
 
-for (let i = 0 ; i < 5 ; i++){
-
 function computerPlay(){
     let computerChoice = choices[Math.floor (Math.random() * choices.length)];
     return computerChoice;
@@ -37,15 +35,21 @@ function computerPlay(){
  function oneRound(playerSelection, computerSelection){
     if (playerSelection == "rock" && computerSelection == "paper") {
         result = "You Lose! Paper Beats Rock";
- }
+    }
+
     if (playerSelection == 'paper' && computerSelection == 'scissors') {
         result = "You Lose! Scissors beats Paper";
     }
 
     if (playerSelection == 'scissors' && computerSelection == 'rock'){
         result = "You Lose! Rock beats Scissors";
+    } 
 
-    } else if(playerSelection == computerSelection){
+    if (playerSelection == null || undefined){
+        alert("Try Again?");
+    }
+
+    else if(playerSelection == computerSelection){
         result = "It's a Tie!Play Again?";
 
     } else{
@@ -62,5 +66,15 @@ let playerSelection = prompt("Enter rock, paper or scissors");
 
 let computerSelection = computerPlay();
 
-console.log (oneRound(playerSelection , computerSelection));
-}
+console.log (oneRound(playerSelection,computerSelection));
+
+/*const rockButton = document.querySelector('#Rock');
+rockButton.addEventListener('click',oneRound('rock',computerSelection));
+
+const paperButton = document.querySelector('#Paper');
+paperButton.addEventListener('click',oneRound('paper',computerSelection));
+
+const scissorButton = document.querySelector('#Scissors');
+scissorButton.addEventListener('click',oneRound('scissors',computerSelection));*/
+
+
